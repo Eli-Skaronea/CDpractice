@@ -2,7 +2,7 @@ pipeline
 {
     agent any
 
-    node('hello_world') 
+    stages
     {
         stage('Checkout') 
         {
