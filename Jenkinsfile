@@ -26,7 +26,7 @@ node{
 
     stage('Deploy container') {   
         echo 'Running application in container...'   
-        sh 'docker run --name first_image:"${env.BUILD_NUMBER}" eskaronea/first_image'
+        sh "docker run --name first_image:${env.BUILD_NUMBER} eskaronea/first_image"
     }
     
 }
