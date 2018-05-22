@@ -1,3 +1,8 @@
+def gradle(command)
+{
+    sh "./gradlew ${command}"
+}
+
 pipeline 
 {
     agent any
@@ -17,7 +22,7 @@ pipeline
             steps
             { 
                 echo 'Building jar file...'
-                sh './gradlew tasks'
+                gradle 'build'
             }            
            
         }
@@ -25,7 +30,8 @@ pipeline
         {   
             steps
             { 
-                echo 'Building docker image...'   
+                echo 'Building docker image...'
+                sh 'docker build -t first_image:latest'   
             }
         }
         stage('Push docker image') 
@@ -40,6 +46,7 @@ pipeline
             steps
             {
                 echo 'Running application in container'   
+                //sh 'docker run first_image:latest'
             }
         }
     }

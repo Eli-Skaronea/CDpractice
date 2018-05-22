@@ -1,0 +1,6 @@
+agent directive - required, instructs Jenkins to allocate an executor and workspace
+                for the pipeline. By default the agent directiveensures that the source
+                repo is checked out and made available for steps in subsequent stages
+
+Includes using gradle!
+https://www.sourcefield.nl/post/jenkins-pipeline-tutorial/
