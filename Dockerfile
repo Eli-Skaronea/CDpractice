@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-COPY /gradle_intro/build/libs /
+COPY /build/libs/gs-gradle-0.1.0.jar /
 
 #RUN sh -c './gradlew build'
 
