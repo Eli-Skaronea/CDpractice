@@ -1,7 +1,3 @@
-def gradle(command)
-{
-    sh "./gradlew ${command}"
-}
 
 pipeline 
 {
@@ -22,7 +18,7 @@ pipeline
             steps
             { 
                 echo 'Building jar file...'
-                gradle 'build'
+                sh './gradlew build'
             }            
            
         }
