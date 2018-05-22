@@ -1,31 +1,35 @@
-pipeline {
+pipeline 
+{
     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'Checking out project repo...'
-            }
+    node('hello_world') 
+    {
+        stage('Checkout') 
+        {
+            echo 'Checking out project repo...'
+            checkout scm
         }
-        stage('Build jar') {
-            steps {
-                echo 'Building jar file...'
-            }
+        stage('Build jar') 
+        {    
+            echo 'Building jar file...'
+            rtGradle.tool = "Gradle-4.7"
+            buildInfo = rtGradle.run 
+                        rootDir: "/gradle_intro", 
+                        buildFile: 'build.gradle', 
+                        tasks
+           
         }
-        stage('Build docker image') {
-            steps {
-                echo 'Building docker image...'
-            }
+        stage('Build docker image') 
+        {    
+            echo 'Building docker image...'   
         }
-        stage('Push docker image') {
-            steps {
-                echo 'Pushing docker image to docker hub...'
-            }
+        stage('Push docker image') 
+        {    
+           echo 'Pushing docker image to docker hub...'   
         }
-        stage('Run container'){
-            steps{
-                echo 'Running application in container'
-            }
+        stage('Deploy container')
+        {    
+            echo 'Running application in container'   
         }
     }
 }
