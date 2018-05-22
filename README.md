@@ -16,8 +16,6 @@ This repo is for practicing continous development by using Docker and Jenkins fo
 - [ ] Create a webhook between Jenkins and the git repo
 - [ ] Keep docker hub more clean by not creating a new tag everytime (Repo management?)
 
-The latest docker image can be pulled with the command: 
-'docker pull eskaronea/first_image`
-
+The latest docker image can be pulled with the command: `docker pull eskaronea/first_image`
 
 This README was last update on 5/22/18
