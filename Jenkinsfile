@@ -13,10 +13,8 @@ pipeline
         {    
             echo 'Building jar file...'
             rtGradle.tool = "Gradle-4.7"
-            buildInfo = rtGradle.run 
-                        rootDir: "gradle_intro", 
-                        buildFile: 'build.gradle', 
-                        tasks
+            buildInfo = rtGradle.build
+                        
            
         }
         stage('Build docker image') 
