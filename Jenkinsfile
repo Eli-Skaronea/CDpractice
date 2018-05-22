@@ -26,7 +26,7 @@ node{
 
     stage('Deploy container') {   
         echo 'Running application in container'   
-        //sh 'docker run first_image:latest'
+        sh 'docker run eskaronea/first_image'
     }
     
 }
