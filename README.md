@@ -1,6 +1,6 @@
-# Practicing CD Dev with Jenkins/Docker
+# Practicing Continuous Dev with Jenkins/Docker
 
-This repo is for practicing continous development by using Docker and Jenkins.
+This repo is for practicing continous development by using Docker and Jenkins for my internship.
 
 ## The goals are:
 - Have jenkins running on a container on the local machine
