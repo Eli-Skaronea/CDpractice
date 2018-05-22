@@ -1,0 +1,13 @@
+1.) Create a dockerfile with the required instructions
+2.) Use docker build command to create a Docker image based on the Dockerfile created in 1
+    -t is docker image tag, give a name to your image and tag
+    . is used to specify build Dockerfile from current directory
+
+FROM - sets the base image for the rest of the instructions
+MAINTAINER - tells who the author of the generated images
+CMD - gives an instruction
+    Format when used individually without ENTRYPOINT:
+        CMD ["executable", "param1", "param2"]
+ENTRYPOINT - specify the default app that you want to run 
+            (this is the way to config a container that will run as an executable)
+            
