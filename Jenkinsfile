@@ -6,28 +6,42 @@ pipeline
     {
         stage('Checkout') 
         {
-            echo 'Checking out project repo...'
-            checkout scm
+            steps
+            {
+                echo 'Checking out project repo...'
+                checkout scm
+            }
         }
         stage('Build jar') 
-        {    
-            echo 'Building jar file...'
-            rtGradle.tool = "Gradle-4.7"
-            buildInfo = rtGradle.build
-                        
+        {   
+            steps
+            { 
+                echo 'Building jar file...'
+                rtGradle.tool = "Gradle-4.7"
+                buildInfo = rtGradle.build
+            }            
            
         }
         stage('Build docker image') 
-        {    
-            echo 'Building docker image...'   
+        {   
+            steps
+            { 
+                echo 'Building docker image...'   
+            }
         }
         stage('Push docker image') 
-        {    
-           echo 'Pushing docker image to docker hub...'   
+        {
+            steps
+            {    
+                echo 'Pushing docker image to docker hub...'   
+            }        
         }
         stage('Deploy container')
-        {    
-            echo 'Running application in container'   
+        {   
+            steps
+            {
+                echo 'Running application in container'   
+            }
         }
     }
 }
