@@ -1,49 +1,32 @@
+node{
+    def app
 
-pipeline 
-{
-    agent {dockerfile true}
+    stage('Checkout'){
+        echo 'Checking out project repo...'
+        checkout scm    
+    }
 
-    stages
-    {
-        stage('Checkout') 
-        {
-            steps
-            {
-                echo 'Checking out project repo...'
-                checkout scm
-            }
-        }
-        stage('Build jar') 
-        {   
-            steps
-            { 
-                echo 'Building jar file...'
-                sh './gradlew build'
-            }            
-           
-        }
-        stage('Build docker image') 
-        {   
-            steps
-            { 
-                echo 'Building docker image...'
-                sh 'docker build -t first_image:latest'   
-            }
-        }
-        stage('Push docker image') 
-        {
-            steps
-            {    
-                echo 'Pushing docker image to docker hub...'   
-            }        
-        }
-        stage('Deploy container')
-        {   
-            steps
-            {
-                echo 'Running application in container'   
-                //sh 'docker run first_image:latest'
-            }
+    stage('Build jar') {   
+        echo 'Building jar file...'
+        sh './gradlew build'
+    }
+
+    stage('Build docker image') {
+        echo 'Building docker image...'
+        app = docker.build("eskaronea/first_image")   
+    }
+        
+    stage('Push docker image') {
+        echo 'Pushing docker image to docker hub...'
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
+            app.push("${env.BUILDNUMBER}")
+            app.push("latest")
         }
     }
+
+    stage('Deploy container') {   
+        echo 'Running application in container'   
+        //sh 'docker run first_image:latest'
+    }
+    
 }
