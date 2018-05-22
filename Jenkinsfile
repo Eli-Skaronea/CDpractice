@@ -1,4 +1,9 @@
+def gradle(command){
+        sh "./gradlew ${command}"
+    }
+
 node{
+    
     def app
 
     stage('Checkout'){
@@ -8,7 +13,7 @@ node{
 
     stage('Build jar') {   
         echo 'Building jar file...'
-        sh './gradlew build'
+        gradle 'build'
     }
 
     stage('Build docker image') {
