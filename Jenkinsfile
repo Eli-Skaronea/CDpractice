@@ -17,8 +17,7 @@ pipeline
             steps
             { 
                 echo 'Building jar file...'
-                rtGradle.tool = "Gradle-4.7"
-                buildInfo = rtGradle.build
+                sh './gradlew tasks'
             }            
            
         }
